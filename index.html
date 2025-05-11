@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akses Diblokir</title>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .box {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      max-width: 400px;
+      text-align: center;
+    }
+    h1 {
+      color: #d9534f;
+    }
+    p {
+      margin: 0.5rem 0;
+    }
+    .info {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: gray;
+    }
+    .qr-container {
+      margin-top: 2rem;
+    }
+    .form-container {
+      margin-top: 1rem;
+    }
+    .form-container input, .form-container textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+    }
+    .form-container button {
+      padding: 0.7rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      width: 100%;
+    }
+    .form-container button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Akses Diblokir</h1>
+    <p>Internet Anda TERISOLIR atau dinonaktifkan karena belum melakukan pembayaran.</p>
+    <p>Silakan segera lakukan pembayaran untuk mengaktifkan Internet kembali.</p>
+
+    <div class="qr-container">
+      <h3>QR Code Pembayaran</h3>
+      <p>Scan QR Code untuk melakukan pembayaran</p>
+      <div id="qrcode"></div>
+    </div>
+
+    <div class="info">
+      <p>Atau hubungi admin melalui WhatsApp:</p>
+      <a href="https://wa.me/081234567890" target="_blank" style="text-decoration: none; color: #25d366; font-weight: bold;">
+        Chat via WhatsApp
+      </a>
+    </div>
+
+    <div class="form-container">
+      <h3>Formulir Kontak</h3>
+      <p>Jika ada masalah atau pertanyaan, isi formulir berikut:</p>
+      <form action="mailto:support@ispkamu.com" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Nama" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" rows="4" placeholder="Pesan" required></textarea>
+        <button type="submit">Kirim Pesan</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Generate QR Code for payment
+    var paymentUrl = "https://www.dana.id/pay/08"; // Ganti dengan link pembayaranmu
+    QRCode.toCanvas(document.getElementById('qrcode'), paymentUrl, function (error) {
+      if (error) console.error(error);
+    });
+  </script>
+</body>
+</html>
